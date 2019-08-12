@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {ProductContext} from '../contexts/ProductContext'
+
 
 
 const Item = props => {
+	const scart = useContext(ProductContext)
 
 	return (
 		<div className="shopping-cart_item">
@@ -11,7 +14,7 @@ const Item = props => {
 			<div>
 				<h1>{props.title}</h1>
 				<p>$ {props.price}</p>
-				<button>Remove from cart</button>
+				<button onClick={() => scart.removeItem(props)}>Remove from cart</button>
 			</div>
 		</div>
 	);
@@ -21,8 +24,8 @@ export default Item;
 
 
 
-// removeItem(itemId){
-// 	const deletedItem = items.indexOf(itemId)
+// removeItem(id){
+// 	const deletedItem = items.indexOf(id)
 // 	const deleted = items.splice(deletedItem, 1)
 // 	setState()  
 //   }

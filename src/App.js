@@ -17,11 +17,20 @@ function App() {
 		setCart([...cart, item]);
 	};
 
+	const removeItem = (prod) => {
+		const newArr = [];
+		cart.forEach(e => {
+			if (e.id !== prod.id) {
+				newArr.push(e);
+		}})
+		setCart(newArr);
+	}
+
 	return (
 		<div className="App">
 
 			{/* Routes */}
-			<ProductContext.Provider value={{ products, addItem }}>
+			<ProductContext.Provider value={{ products, addItem, removeItem }}>
 				{/* <Route exact path="/" component={Products} /> */}
 				<CartContext.Provider value={{ cart}} >
 					<Navigation cart={cart} />
